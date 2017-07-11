@@ -1,5 +1,6 @@
 <?php
 require_once('db.php');
+require_once('validator.php');
 class User
 {
     public $table='users';
@@ -17,5 +18,16 @@ class User
         VALUES('{$this->name}','{$this->email}','$encypt',$time,$time)");
     }
     
+    public function validate()
+    {
+        $validator = new Validator();
+
+        $validator->required('name',$this->name);
+        $validator->human_name('name',$this->name);
+
+        
+
+    }
+
 
 }

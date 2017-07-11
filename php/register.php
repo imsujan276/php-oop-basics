@@ -14,6 +14,8 @@ if($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST))
     $u->email    = $_POST['email'];
     $u->password = $_POST['password'];
 
+    $u->validate();
+
     if($u->register())
     {
         $msg='success';
