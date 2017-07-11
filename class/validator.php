@@ -15,7 +15,7 @@ class Validator
         if(!$result)
         {
             $this->_errors[]=array(
-                $field =>"The $field' is not valid format."
+                $field =>"The $field is not valid format."
             );
         }
         return TRUE;
@@ -26,7 +26,7 @@ class Validator
         if(empty($value))
         {
             $this->_errors[]=array(
-                $field =>"The $field' is not required."
+                $field =>"The $field is required."
             );
         }
         return TRUE;
