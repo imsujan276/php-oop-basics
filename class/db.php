@@ -10,30 +10,38 @@ class DB{
 
         $username='root';
         $password='toor';
-        $database='phps_oop';
+        $database='php_oop';
         $server='localhost';
 
         // Try and connect to the database
         $this->_conn = mysqli_connect($server,$username,$password,$database);
 
         // If connection was not successful, handle the error
-        if($this->_conn === false) 
+        if($this->_conn === FALSE) 
         {
             die('FAILED TO CONNECT IN DB');
         }
     }
+
     public static function init() 
     {
 		if(self::$instance instanceof self) 
         {
-			return false;
+			return FALSE;
 		}		
 		self::$instance = new self();
 	}
     
-    public static function test()
+    public static function query($query)
     {
-        echo 'im function';
+        $return = mysqli_query(self::$instance->_conn,$query);
+
+        if(!$return)
+        {
+            die('error query: '.self::$instance->_conn->error);
+        }
+
+        return $return;
     }
 }
 
